@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jenkinslampsConfig>
+    <jenkinsUrl>http://your-ci-server:8080/</jenkinsUrl>
+    <pollTimeMsec>10000</pollTimeMsec>
+    <turnOn>09:00</turnOn>
+    <turnOff>17:00</turnOff>
+    <activeHolidays>false</activeHolidays>
+
+    <lamps>
+        <lamp>
+            <name>green</name>
+            <description>Turn on green lamp when job unit-test is ok</description>
+            <onCommand>"C:\\Program Files (x86)\\Telldus\\tdtool.exe" --on 1</onCommand>
+            <offCommand>"C:\\Program Files (x86)\\Telldus\\tdtool.exe" --off 1</offCommand>
+            <jobs>
+                <job>unit-test</job>
+            </jobs>
+            <actions>
+                <whenAllJobsOk>on</whenAllJobsOk>
+                <whenAnyJobFails>off</whenAnyJobFails>
+                <whenAnyJobUndefined>off</whenAnyJobUndefined>
+            </actions>
+        </lamp>
+
+        <lamp>
+            <name>red</name>
+            <description>Turn on red lamp when job unit-test has failed</description>
+            <onCommand>"C:\\Program Files (x86)\\Telldus\\tdtool.exe" --on 2</onCommand>
+            <offCommand>"C:\\Program Files (x86)\\Telldus\\tdtool.exe" --off 2</offCommand>
+            <jobs>
+                <job>unit-test</job>
+                <job>unit-test2</job>
+            </jobs>
+            <actions>
+                <whenAllJobsOk>off</whenAllJobsOk>
+                <whenAnyJobUndefined>off</whenAnyJobUndefined>
+                <whenAnyJobFails>on</whenAnyJobFails>
+            </actions>
+        </lamp>
+    </lamps>
+
+</jenkinslampsConfig>
+

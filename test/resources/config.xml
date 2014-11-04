@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jenkinslampsConfig>
+    <jenkinsUrl>http://ec2-54-171-84-56.eu-west-1.compute.amazonaws.com/api/xml/</jenkinsUrl>
+    <pollTimeMsec>10000</pollTimeMsec>
+    <turnOn>08:00</turnOn>
+    <turnOff>17:00</turnOff>
+    <activeHolidays>true</activeHolidays>
+
+    <lamps>
+        <lamp>
+            <name>green</name>
+            <description>Turn on green lamp when job TestBankAccount is ok</description>
+            <onCommand>tdtool --on 1</onCommand>
+            <offCommand>tdtool --off 1</offCommand>
+            <jobs>
+                <job>TestBankAccount</job>
+            </jobs>
+            <actions>
+                <whenAllJobsOk>on</whenAllJobsOk>
+                <whenAnyJobFails>off</whenAnyJobFails>
+                <whenAnyJobUndefined>on</whenAnyJobUndefined>
+            </actions>
+        </lamp>
+
+        <lamp>
+            <name>red</name>
+            <description>Turn on red lamp when job TestBankAccount has failed</description>
+            <onCommand>tdtool --on 2</onCommand>
+            <offCommand>tdtool --off 2</offCommand>
+            <jobs>
+                <job>TestBankAccount</job>
+            </jobs>
+            <actions>
+                <whenAllJobsOk>off</whenAllJobsOk>
+                <whenAnyJobUndefined>on</whenAnyJobUndefined>
+                <whenAnyJobFails>on</whenAnyJobFails>
+            </actions>
+        </lamp>
+    </lamps>
+
+</jenkinslampsConfig>
