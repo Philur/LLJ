@@ -19,11 +19,11 @@ import java.util.Map;
 /*
  * Created by u017121
  */
-public class JenkinsJobStatusFetcherTest {
-    @Test
-    public void JenkinsJobStatusFetcherTest_url() throws Exception {
+//public class JenkinsJobStatusFetcherTest {
+    //@Test
+    //public void JenkinsJobStatusFetcherTest_url() throws Exception {
         
-		URL temp_url = new URL("http://www.temp.com");
+		//URL temp_url = new URL("http://www.temp.com");
 		/*JenkinsJobStatusFetcher tempFetcher = new JenkinsJobStatusFetcher(temp_url());
 		
 		assertThat(tempFetcher(), is(""));*/
@@ -32,5 +32,5 @@ public class JenkinsJobStatusFetcherTest {
 		/*Calendar rightNow = Calendar.getInstance();
 		Holiday tempHoliday = new Holiday(rightNow, "HolidayName");
 		assertThat(tempHoliday.getDate(), is(rightNow));*/
-    }
-}
+    //}
+//}
